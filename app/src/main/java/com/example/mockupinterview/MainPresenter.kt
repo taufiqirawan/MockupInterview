@@ -1,5 +1,7 @@
 package com.example.mockupinterview
 
+import android.util.Log
+
 class MainPresenter {
     private lateinit var view : MainView
     private var finalResult : Int = 0
@@ -8,27 +10,54 @@ class MainPresenter {
         this.view = view
     }
 
-    fun diceScore ( number : Int) {
+    fun result(score1 : Int, score2 : Int) {
+        if (score1 > score2) {
+            view.getResult("Player 1 Win")
+            Log.d( "result: ", "Player 1 Win")
+        }else if (score2 > score1) {
+            view.getResult("Player 2 Win")
+            Log.d( "result: ", "Player 2 Win")
+        }else{
+            view.getResult("Draw")
+            Log.d("result: ", "Draw")
+        }
+    }
+
+    fun diceScore ( number : Int) : Int {
+        var score = 0
         when (number) {
             1 -> {
-                view.addScore(5)
+                score = 5
+                Log.d("Angka", "1")
+                Log.d("Score", "5")
             }
             3 -> {
-                view.addScore(5)
+                score = 5
+                Log.d("Angka", "3")
+                Log.d("Score", "5")
             }
             5 -> {
-                view.addScore(5)
+                score = 5
+                Log.d("Angka", "5")
+                Log.d("Score", "5")
             }
             2 -> {
-                view.addScore(-3)
+                score = -3
+                Log.d("Angka", "2")
+                Log.d("Score", "-3")
             }
             4 -> {
-                view.addScore(-3)
+                score = -3
+                Log.d("Angka", "4")
+                Log.d("Score", "-3")
             }
             6 -> {
-                view.addScore(-3)
+                score = -3
+                Log.d("Angka", "6")
+                Log.d("Score", "-3")
             }
         }
+        return score
     }
 
 }
